@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <div class="cabecera">
+    <div class="titulo-pagina">
+      <h1 class="titulo">LISTAS DE COMPRAS</h1>
+    </div>
+  </div>
+  <div class="navbar-top"></div>
+  <div class="container py-4">
+    <div class="table-responsive">
+      <table class="table table-striped rounded">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Lista</th>
+            <th>Login</th>
+            <th>Id Usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let shoppingList of shoppingLists; let i = index">
+            <tr>
+              <td>{{ shoppingList.userid }}</td>
+              <td>{{ shoppingList.list_name }}</td>
+              <td>{{ shoppingList.userid }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+    <!--<div class="alert alert-success alert-dismissible" *ngIf="mostrarMensaje">
+      El usuario se ha eliminado correctamente.
+      <button type="button" class="close" (click)="cerrarMensaje()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>-->
+  <div id="footer" class="footer-con-imagen">
+    <div class="imagen-con-textoF">
+      <div class="texto-con-lineaF">
+        <div class="linea-verticalF">
+          <span>© 2023 Universidad del Cauca, Inc.</span>
+        </div>
+        <span>Terms Privacy Security</span>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
