@@ -8,8 +8,15 @@ import { EditarListaComponent } from './components/editar-lista/editar-lista.com
 import { CrearListaComponent } from './components/crear-lista/crear-lista.component';
 import { EliminarListaComponent } from './components/eliminar-lista/eliminar-lista.component';
 import { VisualizarListaComponent } from './components/visualizar-lista/visualizar-lista.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { UsuariosService } from './services/usuarios.service';
+import { FormsModule } from '@angular/forms';
 import { ListasService } from './services/listas.service';
+import { ToastrModule } from 'ngx-toastr';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule,HTTP_INTERCEPTORS}from '@angular/common/http';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,13 +25,24 @@ import { ListasService } from './services/listas.service';
     EditarListaComponent,
     CrearListaComponent,
     EliminarListaComponent,
-    VisualizarListaComponent
+    VisualizarListaComponent, 
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }), BrowserAnimationsModule, 
+    
   ],
-  providers: [ListasService],
-  bootstrap: [AppComponent]
+  providers: [ListasService,UsuariosService,{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Añade esta línea
 })
 export class AppModule { }

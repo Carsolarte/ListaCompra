@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent {
   constructor(private router:Router){
-    this.router.navigate(['shoppinglists/user/:id'])
+    this.router.navigate(['/login'])
 
   }
 

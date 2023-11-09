@@ -4,9 +4,11 @@ import { VisualizarListaComponent } from './components/visualizar-lista/visualiz
 import { CrearListaComponent } from './components/crear-lista/crear-lista.component';
 import { EditarListaComponent } from './components/editar-lista/editar-lista.component';
 import { EliminarListaComponent } from './components/eliminar-lista/eliminar-lista.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path: 'shoppinglists/user/:id', component:VisualizarListaComponent},
+  {path: 'shoppinglists', component:VisualizarListaComponent},
+  {path: 'login',component:LoginComponent},
   {path: 'crearLista', component:CrearListaComponent},
   {path: 'editarLista', component: EditarListaComponent},
   {path: 'eliminarLista', component: EliminarListaComponent}

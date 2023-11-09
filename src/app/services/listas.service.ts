@@ -12,19 +12,24 @@ export class ListasService {
 
   constructor(private http:HttpClient) { }
 
-   // Obtener listas de un usuario
-   getListsByUser(userId: User): Observable<any> {
-    return this.http.get(`${this.API_URI}/user/${userId}`);
+ 
+  getShoppingListas(): Observable<ShoppingList[]> {
+    /*  const token = localStorage.getItem('token')
+     const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`) */
+    /*     return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers: headers } ) */
+    return this.http.get<ShoppingList[]>(`${this.API_URI}/shoppingList/`)
   }
-   // Obtener una lista en específico por su ID
-   getListById(id: string): Observable<any> {
-    return this.http.get(`${this.API_URI}/shoppingList/${id}`);
+  getShoppingLista(id:number): Observable<ShoppingList[]> {
+    /*  const token = localStorage.getItem('token')
+     const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`) */
+    /*     return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers: headers } ) */
+    return this.http.get<ShoppingList[]>(`${this.API_URI}/shoppingList/user/${id}`)
   }
-  getShoppingLista(id:number) {
+  /*getShoppingLista(id:number) {
     console.log( this.http.get(`${this.API_URI}/shoppingList/${id}`));
     return this.http.get(`${this.API_URI}/shoppingList/${id}`);
     }
-
+*/
   saveShoppingLista(lista: ShoppingList) {
     
     return this.http.post(`${this.API_URI}/shoppingList/`, lista);

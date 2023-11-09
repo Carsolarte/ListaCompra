@@ -1,0 +1,19 @@
+.centered-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color:rgb(248, 247, 244);
+  height: 100vh; /* Esto ocupa toda la altura de la ventana */
+}
+
+.logo{
+  height: 130px;
+  margin-bottom: 10px;
+}
+
+.body{
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+}
