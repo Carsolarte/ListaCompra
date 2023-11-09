@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="cabecera">
       <div class="titulo-pagina">
-        <h1 class="titulo">LISTAS DE COMPRAS</h1>
+        <h1 class="titulo">{{ shoppingList?.list_name || 'LISTAS DE COMPRAS' }} </h1>
         <img class="carritocompras" src="../../../assets/carrito-de-compras.png" alt="img carritocompras">
       </div>
     </div>
@@ -14,7 +14,7 @@
         <table class="table table-striped rounded">
           <thead>
             <tr>
-              <th>Lista</th>
+              <th>Proveedor</th>
               <th>Productos</th>
               <th>Precio $</th>  
               <th>Estado</th> 
@@ -22,17 +22,27 @@
           </thead>
        <!-- editar-lista.component.html -->
        <tbody>
-        <ng-container *ngFor="let product of productList">
+        <ng-container *ngFor="let product of productList"  >
           <tr *ngIf="shoppingList && product">
-            <td>{{ shoppingList.list_name }}</td>
-            <td>{{ product.product_name }}</td>
-            <td>{{ product.producto_price }}</td>
+            <td>{{ product.product_name  }}</td>   
+            <td>{{ product.product_name  }}</td>
+             <td>{{ product.producto_price }}</td>
             <td>{{ product.list_product_state }}</td>
+            <td>
+                <button class="btn btn-danger"  title="Eliminar" style="margin-left: 5px;">
+                  <i class="fas fa-trash-alt"></i> 
+              </button>
+            </td>
           </tr>
         </ng-container>
       </tbody>
   
         </table>
+      </div>
+      <div class="fixed-bottom" style="left: 15px; bottom: 15px;">
+        <button class="btn btn-primary" >
+          Agregar Producto
+        </button>
       </div>
       </div>
       <!--<div class="alert alert-success alert-dismissible" *ngIf="mostrarMensaje">

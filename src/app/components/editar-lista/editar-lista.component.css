@@ -92,4 +92,8 @@
     /* Estilos para hacer visible el modal */
     display: block; /* o visibility: visible; u otros estilos */
   }
-  
+  .fixed-bottom {
+    position: fixed;
+    bottom: 30x; /* Ajusta según tu preferencia */
+    right: 80px; /* Ajusta según tu preferencia */
+  }

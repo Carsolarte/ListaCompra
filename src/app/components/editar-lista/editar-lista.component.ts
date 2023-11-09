@@ -22,7 +22,8 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
   constructor(
     private shoppingListService: ListasService,
     private productoService: ProductoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
 
     this.getShoppingLists();
     this.getProductsLists();
-    this.getProduct(2);
+    //this.getProduct(this.listaId);
   }
 
   getShoppingLists() {
@@ -53,7 +54,7 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
         producto_price: product.producto_price
       }));
       console.log(this.productList);
-    });
+      });
   }
   getProduct(id: number) {
     this.productoService.getProduct(id).subscribe(data => {
@@ -61,5 +62,17 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
       console.log(this.product);
     });
   }
-  
+  eliminarProduct(shoppingListId: number) {
+    this.router.navigate(['/editarLista', shoppingListId]);
+  }
+  abrirModalAgregarProducto() {
+    // Abre el modal al hacer clic en el botón "Agregar Producto"
+    //$('#modalAgregarProducto').modal('show');
+  }
+  agregarProducto() {
+    // Lógica para agregar un nuevo producto
+    // Puedes redirigir a una nueva página, mostrar un modal, etc.
+    console.log('Agregar Producto');
+  }
+
 }
