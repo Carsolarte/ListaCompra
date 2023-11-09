@@ -21,7 +21,7 @@
 }
 
 .navbar-top {
-    background-color: #f68f5f;
+    background-color: #f65f85;
     width: 100%;
     height: 20px;
 }
@@ -36,13 +36,23 @@
     overflow: hidden; /* Oculta cualquier contenido que se salga de los bordes redondos */
 }
 
+  .btn-custom {
+    background-color: rgb(240, 210, 78) ;
+    color: #080707;
+  }
+
 .contenedor-crear{
  margin-bottom: 2dvh;
 }
-.btn-custom{ 
-    background-color: #13245E;
-    color: #F8F8F8;
-}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Los botones se apilarán verticalmente */
+  }
+  .button-container button {
+    margin-bottom: 0; /* Eliminar el espaciado entre botones */
+    margin-right: 5px; /* Espaciado horizontal entre botones */
+  }
 /*@media (max-width: 768px) {
   .titulo {
       font-size: 24px; /* Tamaño de fuente más pequeño para pantallas pequeñas 

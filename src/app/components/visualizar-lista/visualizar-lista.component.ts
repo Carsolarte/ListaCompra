@@ -32,4 +32,10 @@ export class VisualizarListaComponent implements OnInit{
   navigateToDetail(shoppingListId: number) {
     this.router.navigate(['/editarLista', shoppingListId]);
   }
+  elimidarLista(shoppingListId: number) {
+    this.router.navigate(['/eliminarLista', shoppingListId]);
+  }
+  crearLista() {
+    this.router.navigate(['/crearLista']);
+  }
 }

@@ -18,10 +18,15 @@ export class LoginComponent implements OnInit {
   password: string = '';
   loading: boolean = false;
 
+  
+  public errorService: ErrorService; // Declara una propiedad pública para el servicio
+
   constructor(private toastr: ToastrService,
     private _userService: UsuariosService,
     private router: Router,
-    private _errorService: ErrorService) { }
+    private _errorService: ErrorService) {
+      this.errorService = _errorService; // Asigna el servicio a la propiedad pública
+    }
 
   ngOnInit(): void {
   }
@@ -48,6 +53,7 @@ export class LoginComponent implements OnInit {
       },
       error: (e: HttpErrorResponse) => {
         this._errorService.msjError(e);
+        this._errorService.setLoginError();
         this.loading = false
       }
     })

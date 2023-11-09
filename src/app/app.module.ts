@@ -15,8 +15,9 @@ import { ListasService } from './services/listas.service';
 import { ToastrModule } from 'ngx-toastr';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule,HTTP_INTERCEPTORS}from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS  }from '@angular/common/http';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
+import { ErrorService } from 'src/app/services/error.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { AddTokenInterceptor } from './utils/add-token.interceptor';
     }), BrowserAnimationsModule, 
     
   ],
-  providers: [ListasService,UsuariosService,{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
+  providers: [ListasService,UsuariosService,ErrorService,{ provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Añade esta línea
 })

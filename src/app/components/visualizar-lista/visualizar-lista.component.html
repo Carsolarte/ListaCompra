@@ -10,6 +10,8 @@
 
   </div>
   <div class="container py-4">
+    <div class="contenedor-crear">
+      <button (click)= "crearLista()" class="btn btn-custom">Crear  <i class="fas fa-plus"></i></button>
     <div class="table-responsive">
       <table class="table table-striped rounded">
         <thead>
@@ -21,10 +23,19 @@
         </thead>
         <tbody>
           <ng-container *ngFor="let shoppingList of shoppingLists; let i = index">
-            <tr (click)="navigateToDetail(shoppingList.listid)">
+            <tr >
               <td>{{ shoppingList.listid }}</td>
               <td>{{ shoppingList.list_name }}</td>
               <td>{{ shoppingList.list_date }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="navigateToDetail(shoppingList.listid)" title="Editar">
+                  <i class="fas fa-pencil-alt"></i> 
+                </button>
+
+                <button class="btn btn-danger" (click)="elimidarLista(shoppingList.listid)" title="Eliminar" style="margin-left: 5px;">
+                  <i class="fas fa-trash-alt"></i> 
+              </button>
+            </td>
             </tr>
           </ng-container>
         </tbody>
