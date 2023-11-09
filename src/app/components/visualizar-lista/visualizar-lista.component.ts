@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingList } from 'src/app/models/ShoppingList';
-import { User } from 'src/app/models/User';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListasService } from 'src/app/services/listas.service';
 
@@ -15,15 +14,11 @@ export class VisualizarListaComponent implements OnInit{
 
   constructor(
     private shoppingListService: ListasService,
-    private route: ActivatedRoute
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    // Obtener el ID del usuario desde la ruta
-   /* this.route.params.subscribe(params => {
-      this.user.userid = +params['id']; // Asigna el valor a user.userid
-    })
-*/
+   
     // Llama al método para obtener las listas de compras
     this.getShoppingLists();
   }
@@ -31,8 +26,10 @@ export class VisualizarListaComponent implements OnInit{
   // Método para obtener las listas de compras
   getShoppingLists() {
     this.shoppingListService.getShoppingListas().subscribe(data => {
-      console.log(data);
       this.shoppingLists = data;
     });
+  }
+  navigateToDetail(shoppingListId: number) {
+    this.router.navigate(['/editarLista', shoppingListId]);
   }
 }

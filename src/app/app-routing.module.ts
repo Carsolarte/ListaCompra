@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'shoppinglists', component:VisualizarListaComponent},
   {path: 'login',component:LoginComponent},
   {path: 'crearLista', component:CrearListaComponent},
-  {path: 'editarLista', component: EditarListaComponent},
+  {path: 'editarLista/:id', component: EditarListaComponent},
   {path: 'eliminarLista', component: EliminarListaComponent}
 ];
 

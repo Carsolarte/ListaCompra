@@ -19,17 +19,17 @@ export class ListasService {
     /*     return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers: headers } ) */
     return this.http.get<ShoppingList[]>(`${this.API_URI}/shoppingList/`)
   }
-  getShoppingLista(id:number): Observable<ShoppingList[]> {
+  getShoppingLista(id:number): Observable<ShoppingList> {
     /*  const token = localStorage.getItem('token')
      const headers = new HttpHeaders().set('Authorization',`Bearer ${token}`) */
     /*     return this.http.get<Product[]>(`${this.myAppUrl}${this.myApiUrl}`, { headers: headers } ) */
-    return this.http.get<ShoppingList[]>(`${this.API_URI}/shoppingList/user/${id}`)
+    return this.http.get<ShoppingList>(`${this.API_URI}/shoppingList/${id}`)
   }
   /*getShoppingLista(id:number) {
     console.log( this.http.get(`${this.API_URI}/shoppingList/${id}`));
     return this.http.get(`${this.API_URI}/shoppingList/${id}`);
     }
-*/
+*/ 
   saveShoppingLista(lista: ShoppingList) {
     
     return this.http.post(`${this.API_URI}/shoppingList/`, lista);

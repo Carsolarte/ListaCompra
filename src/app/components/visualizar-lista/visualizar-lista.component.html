@@ -21,8 +21,8 @@
         </thead>
         <tbody>
           <ng-container *ngFor="let shoppingList of shoppingLists; let i = index">
-            <tr>
-              <td>{{ shoppingList.userid }}</td>
+            <tr (click)="navigateToDetail(shoppingList.listid)">
+              <td>{{ shoppingList.listid }}</td>
               <td>{{ shoppingList.list_name }}</td>
               <td>{{ shoppingList.list_date }}</td>
             </tr>
