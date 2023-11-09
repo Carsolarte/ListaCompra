@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VisualizarListaComponent } from './components/visualizar-lista/visualizar-lista.component';
-import { CrearListaComponent } from './components/crear-lista/crear-lista.component';
 import { EditarListaComponent } from './components/editar-lista/editar-lista.component';
 import { EliminarListaComponent } from './components/eliminar-lista/eliminar-lista.component';
 import { LoginComponent } from './components/login/login.component';
@@ -9,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [
   {path: 'shoppinglists', component:VisualizarListaComponent},
   {path: 'login',component:LoginComponent},
-  {path: 'crearLista', component:CrearListaComponent},
+ 
   {path: 'editarLista/:id', component: EditarListaComponent},
   {path: 'eliminarLista/:id', component: EliminarListaComponent}
 ];

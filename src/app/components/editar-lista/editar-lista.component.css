@@ -1,0 +1,95 @@
+.cabecera {
+    background-color: #F8F8F8;
+    width: 100%;
+    height: 15vh;/* Cambia la altura según tus preferencias */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.icono-izquierda {
+    width: auto; /* Establece el ancho de la imagen como un porcentaje del ancho de la cabecera */
+    max-height: 100%; /* Limita la altura de la imagen al 100% de la altura de la cabecera */
+}
+
+.titulo-pagina {
+    flex: 1;
+    padding-left: 10px;
+    align-self: center;
+    display: flex; /* Establece el título y la imagen como elementos flex */
+    align-items: center; /* Centra verticalmente los elementos dentro de .titulo-pagina */
+}
+
+.navbar-top {
+    background-color: #f65f85;
+    width: 100%;
+    height: 20px;
+}
+
+.titulo-pagina h1{
+    color: #525663;
+    align-content: center;
+}
+
+.table.rounded {
+    border-radius: 30px; /* Ajusta el valor según el nivel de redondeo deseado */
+    overflow: hidden; /* Oculta cualquier contenido que se salga de los bordes redondos */
+}
+
+  .btn-custom {
+    background-color: rgb(240, 210, 78) ;
+    color: #080707;
+  }
+
+.contenedor-crear{
+ margin-bottom: 2dvh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Los botones se apilarán verticalmente */
+  }
+  .button-container button {
+    margin-bottom: 0; /* Eliminar el espaciado entre botones */
+    margin-right: 5px; /* Espaciado horizontal entre botones */
+  }
+/*@media (max-width: 768px) {
+  .titulo {
+      font-size: 24px; /* Tamaño de fuente más pequeño para pantallas pequeñas 
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  /* Media query para pantallas más pequeñas */
+  .button-container {
+    flex-direction: row; /* Los botones se alinearán horizontalmente */
+  }
+
+  .button-container button {
+    margin-bottom: 0; /* Eliminar el espaciado entre botones */
+    margin-right: 5px; /* Espaciado horizontal entre botones */
+  }
+
+
+
+  .wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    display: flex; /* Establece el contenedor como flexbox */
+    align-items: center; /* Centra verticalmente los elementos hijos */
+  }
+  .carritocompras{
+    height: 50px;
+    margin-bottom: 10px;
+  }
+ 
+  .titulo {
+    margin-right: 10px; /* Espacio entre el título y la imagen */
+  }
+  .show {
+    /* Estilos para hacer visible el modal */
+    display: block; /* o visibility: visible; u otros estilos */
+  }
+  

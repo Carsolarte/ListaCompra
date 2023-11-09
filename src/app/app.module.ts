@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { EditarListaComponent } from './components/editar-lista/editar-lista.component';
-import { CrearListaComponent } from './components/crear-lista/crear-lista.component';
+
 import { EliminarListaComponent } from './components/eliminar-lista/eliminar-lista.component';
 import { VisualizarListaComponent } from './components/visualizar-lista/visualizar-lista.component';
 import { LoginComponent } from './components/login/login.component';
@@ -24,7 +24,7 @@ import { ErrorService } from 'src/app/services/error.service';
     AppComponent,
     NavigationComponent,
     EditarListaComponent,
-    CrearListaComponent,
+ 
     EliminarListaComponent,
     VisualizarListaComponent, 
     LoginComponent,
