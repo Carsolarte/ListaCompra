@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShoppingList } from 'src/app/models/ShoppingList';
+import { ShoppingList, ShoppingListParam } from 'src/app/models/ShoppingList';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ListasService } from 'src/app/services/listas.service';
 
@@ -8,9 +8,9 @@ import { ListasService } from 'src/app/services/listas.service';
   templateUrl: './visualizar-lista.component.html',
   styleUrls: ['./visualizar-lista.component.css']
 })
-export class VisualizarListaComponent implements OnInit{
+export class VisualizarListaComponent implements OnInit {
 
-  shoppingLists: ShoppingList[]=[];
+  shoppingLists: ShoppingList[] = [];
 
   constructor(
     private shoppingListService: ListasService,
@@ -18,7 +18,7 @@ export class VisualizarListaComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-   
+
     // Llama al método para obtener las listas de compras
     this.getShoppingLists();
   }
@@ -33,9 +33,15 @@ export class VisualizarListaComponent implements OnInit{
     this.router.navigate(['/editarLista', shoppingListId]);
   }
   elimidarLista(shoppingListId: number) {
-    this.router.navigate(['/eliminarLista', shoppingListId]);
+    this.shoppingListService.deleteShoppingLista(shoppingListId).subscribe(data => {
+      const index = this.shoppingLists.findIndex(item => item.listid === shoppingListId);
+      if (index !== -1) {
+        this.shoppingLists.splice(index, 1);
+      }
+    });
+
   }
- 
+
   mostrarModal = false;
   nombreLista = '';
 
@@ -50,7 +56,16 @@ export class VisualizarListaComponent implements OnInit{
 
   guardarLista() {
     // Aquí puedes implementar la lógica para guardar la lista con this.nombreLista
-    console.log('Guardando lista:', this.nombreLista);
+    if (this.nombreLista != "" && this.nombreLista != null) {
+      console.log('Guardando lista:', this.nombreLista);
+      const lista: ShoppingListParam = {
+        list_name: this.nombreLista,
+      };
+      this.shoppingListService.saveShoppingLista(lista).subscribe(data => {
+       this.getShoppingLists()
+        
+      });
+    }
     this.cerrarModal();
   }
 }

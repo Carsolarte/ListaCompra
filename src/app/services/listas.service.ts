@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ShoppingList } from '../models/ShoppingList';
+import { ShoppingList, ShoppingListParam } from '../models/ShoppingList';
 import { User } from '../models/User';
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class ListasService {
     return this.http.get(`${this.API_URI}/shoppingList/${id}`);
     }
 */ 
-  saveShoppingLista(lista: ShoppingList) {
+  saveShoppingLista(lista: ShoppingListParam) {
     
     return this.http.post(`${this.API_URI}/shoppingList/`, lista);
   }

@@ -4,3 +4,7 @@ export interface ShoppingList{
     list_name:string;
     userid:number;
 }
+
+export interface ShoppingListParam{
+    list_name:string;
+}
