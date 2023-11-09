@@ -35,9 +35,9 @@ export class VisualizarListaComponent implements OnInit {
   elimidarLista(shoppingListId: number) {
     this.shoppingListService.deleteShoppingLista(shoppingListId).subscribe(data => {
       const index = this.shoppingLists.findIndex(item => item.listid === shoppingListId);
-      if (index !== -1) {
-        this.shoppingLists.splice(index, 1);
-      }
+      if (index !== -1) {   
+        this.shoppingLists.splice(index, 1);    
+      }   
     });
 
   }
