@@ -1,1 +1,55 @@
-<p>editar-lista works!</p>
+<div class="wrapper">
+    <div class="cabecera">
+      <div class="titulo-pagina">
+        <h1 class="titulo">LISTAS DE COMPRAS</h1>
+        <img class="carritocompras" src="../../../assets/carrito-de-compras.png" alt="img carritocompras">
+      </div>
+    </div>
+  
+    <div class="navbar-top">
+  
+    </div>
+    <div class="container py-4">
+      <div class="table-responsive">
+        <table class="table table-striped rounded">
+          <thead>
+            <tr>
+              <th>Lista</th>
+              <th>Productos</th>
+              <th>Precio $</th>  
+              <th>Estado</th> 
+            </tr>
+          </thead>
+       <!-- editar-lista.component.html -->
+       <tbody>
+        <ng-container *ngFor="let product of productList">
+          <tr *ngIf="shoppingList && product">
+            <td>{{ shoppingList.list_name }}</td>
+            <td>{{ product.product_name }}</td>
+            <td>{{ product.producto_price }}</td>
+            <td>{{ product.list_product_state }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+  
+        </table>
+      </div>
+      </div>
+      <!--<div class="alert alert-success alert-dismissible" *ngIf="mostrarMensaje">
+        El usuario se ha eliminado correctamente.
+        <button type="button" class="close" (click)="cerrarMensaje()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>-->
+  <!--<div id="footer" class="footer-con-imagen">
+      <div class="imagen-con-textoF">
+        <div class="texto-con-lineaF">
+         
+          <span>Terms Privacy Security</span>
+        </div>
+      </div>
+    </div>
+  -->  
+  <router-outlet></router-outlet>
+  
