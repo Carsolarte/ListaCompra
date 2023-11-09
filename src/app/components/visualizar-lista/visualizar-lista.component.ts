@@ -35,7 +35,22 @@ export class VisualizarListaComponent implements OnInit{
   elimidarLista(shoppingListId: number) {
     this.router.navigate(['/eliminarLista', shoppingListId]);
   }
-  crearLista() {
-    this.router.navigate(['/crearLista']);
+ 
+  mostrarModal = false;
+  nombreLista = '';
+
+  openCrearListaModal() {
+    this.mostrarModal = true;
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
+    this.nombreLista = ''; // Limpiar el nombreLista al cerrar el modal
+  }
+
+  guardarLista() {
+    // Aquí puedes implementar la lógica para guardar la lista con this.nombreLista
+    console.log('Guardando lista:', this.nombreLista);
+    this.cerrarModal();
   }
 }

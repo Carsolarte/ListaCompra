@@ -35,7 +35,7 @@ export class EditarListaComponent {
     );
     this.getShoppingLists();
     this.getProductsLists();
-    this.getProduct(6);
+    this.getProduct(2);
   }
   //devuelve la lista ingresada por el id
   getShoppingLists() {

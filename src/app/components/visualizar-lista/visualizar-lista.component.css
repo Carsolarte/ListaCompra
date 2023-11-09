@@ -88,4 +88,8 @@
   .titulo {
     margin-right: 10px; /* Espacio entre el título y la imagen */
   }
+  .show {
+    /* Estilos para hacer visible el modal */
+    display: block; /* o visibility: visible; u otros estilos */
+  }
   
