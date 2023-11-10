@@ -1,0 +1,85 @@
+<div class="wrapper">
+    <div class="cabecera">
+        <div class="titulo-pagina">
+            <h1 class="titulo">Información Productos</h1>
+            <img class="carritocompras" src="../../../assets/carrito-de-compras.png" alt="img carritocompras">
+
+        </div>
+    </div>
+    <div class="navbar-top">
+    </div>
+    <div class="container py-4">
+        <div class="contenedor-crear">
+            <div class="d-flex align-items-center">
+                <h2 class="titulo">Proveedores</h2>
+                <button class="btn btn-primary ml-2">
+                  Agregar Proovedor
+                </button>
+              </div>
+            <table class="table table-striped rounded">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let supplier of suppliers; let i = index">
+                        <tr>
+                            <td>{{ supplier.supplierid }}</td>
+                            <td>{{ supplier.supplier_name }}</td>
+                            <td>
+                                <button class="btn btn-primary" title="Edssitar">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+
+                                <button class="btn btn-danger" title="Eliminar" style="margin-left: 5px;">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <div class="d-flex align-items-center">
+                <h2 class="titulo">Productos</h2>
+                <button class="btn btn-primary ml-2">
+                  Agregar producto
+                </button>
+              </div>
+            <table class="table table-striped rounded">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre</th>
+                        <th>Precio</th>
+                        <th>Proveedor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let product of products; let i = index">
+                        <tr>
+                            <td>{{ product.productid }}</td>
+                            <td>{{ product.product_name }}</td>
+                            <td>{{ product.product_price }}</td>
+                            <td>{{ product.supplierid }}</td>
+                            <td>
+                                <button class="btn btn-primary" title="Edssitar">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+
+                                <button class="btn btn-danger" title="Eliminar" style="margin-left: 5px;">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <router-outlet></router-outlet>

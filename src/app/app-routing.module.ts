@@ -4,10 +4,12 @@ import { VisualizarListaComponent } from './components/visualizar-lista/visualiz
 import { EditarListaComponent } from './components/editar-lista/editar-lista.component';
 import { EliminarListaComponent } from './components/eliminar-lista/eliminar-lista.component';
 import { LoginComponent } from './components/login/login.component';
+import { InfoProductsComponent } from './components/info-products/info-products.component';
 
 const routes: Routes = [
   {path: 'shoppinglists', component:VisualizarListaComponent},
   {path: 'login',component:LoginComponent},
+  {path: 'info',component:InfoProductsComponent},
  
   {path: 'editarLista/:id', component: EditarListaComponent},
   {path: 'eliminarLista/:id', component: EliminarListaComponent}

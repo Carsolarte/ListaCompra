@@ -3,7 +3,12 @@
     <div class="titulo-pagina">
       <h1 class="titulo">LISTAS DE COMPRAS</h1>
       <img class="carritocompras" src="../../../assets/carrito-de-compras.png" alt="img carritocompras">
+
     </div>
+
+    <button class="btn btn-primary" (click)="navigateToDetailInfo()">Agregar Información Productos</button>
+    <span style="margin-right: 10px;"></span>
+    <button class="btn btn-danger" (click)="cerrarSesion()">Cerrar Sesión</button>
   </div>
 
   <div class="navbar-top">
@@ -33,50 +38,35 @@
         </div>
       </div>
 
-    <div class="table-responsive">
-      <table class="table table-striped rounded">
-        <thead>
-          <tr>
-            <th>Numero Lista</th>
-            <th>Lista</th>
-            <th>Fecha creacion</th>  
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container *ngFor="let shoppingList of shoppingLists; let i = index">
-            <tr >
-              <td>{{ shoppingList.listid }}</td>
-              <td>{{ shoppingList.list_name }}</td>
-              <td>{{ shoppingList.list_date }}</td>
-              <td>
-                <button class="btn btn-primary" (click)="navigateToDetail(shoppingList.listid)" title="Editar">
-                  <i class="fas fa-pencil-alt"></i> 
-                </button>
-
-                <button class="btn btn-danger" (click)="elimidarLista(shoppingList.listid)" title="Eliminar" style="margin-left: 5px;">
-                  <i class="fas fa-trash-alt"></i> 
-              </button>
-            </td>
+      <div class="table-responsive">
+        <table class="table table-striped rounded">
+          <thead>
+            <tr>
+              <th>Numero Lista</th>
+              <th>Lista</th>
+              <th>Fecha creacion</th>
             </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
-    </div>
-    <!--<div class="alert alert-success alert-dismissible" *ngIf="mostrarMensaje">
-      El usuario se ha eliminado correctamente.
-      <button type="button" class="close" (click)="cerrarMensaje()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>-->
-<!--<div id="footer" class="footer-con-imagen">
-    <div class="imagen-con-textoF">
-      <div class="texto-con-lineaF">
-       
-        <span>Terms Privacy Security</span>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let shoppingList of shoppingLists; let i = index">
+              <tr>
+                <td>{{ shoppingList.listid }}</td>
+                <td>{{ shoppingList.list_name }}</td>
+                <td>{{ shoppingList.list_date }}</td>
+                <td>
+                  <button class="btn btn-primary" (click)="navigateToDetail(shoppingList.listid)" title="Editar">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+
+                  <button class="btn btn-danger" (click)="elimidarLista(shoppingList.listid)" title="Eliminar"
+                    style="margin-left: 5px;">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
       </div>
     </div>
-  </div>
--->  
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>

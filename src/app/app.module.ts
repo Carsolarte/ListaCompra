@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule,HTTP_INTERCEPTORS  }from '@angular/common/http';
 import { AddTokenInterceptor } from './utils/add-token.interceptor';
 import { ErrorService } from 'src/app/services/error.service';
+import { InfoProductsComponent } from './components/info-products/info-products.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ErrorService } from 'src/app/services/error.service';
  
     EliminarListaComponent,
     VisualizarListaComponent, 
-    LoginComponent,
+    LoginComponent, InfoProductsComponent,
     
   ],
   imports: [

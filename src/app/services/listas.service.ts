@@ -34,8 +34,7 @@ export class ListasService {
     
     return this.http.post(`${this.API_URI}/shoppingList/`, lista);
   }
-  updateShoppingLista(id: number, updatedLista: ShoppingList) {
-    console.log(updatedLista);
+  updateShoppingLista(id: number, updatedLista: ShoppingListParam) {
     return this.http.put(`${this.API_URI}/shoppingList/${id}`, updatedLista);
   } 
   deleteShoppingLista(id: number): Observable<any> {

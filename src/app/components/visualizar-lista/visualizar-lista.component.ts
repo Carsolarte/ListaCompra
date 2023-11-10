@@ -32,6 +32,9 @@ export class VisualizarListaComponent implements OnInit {
   navigateToDetail(shoppingListId: number) {
     this.router.navigate(['/editarLista', shoppingListId]);
   }
+  navigateToDetailInfo() {
+    this.router.navigate(['/info']);
+  }
   elimidarLista(shoppingListId: number) {
     this.shoppingListService.deleteShoppingLista(shoppingListId).subscribe(data => {
       const index = this.shoppingLists.findIndex(item => item.listid === shoppingListId);
@@ -39,7 +42,6 @@ export class VisualizarListaComponent implements OnInit {
         this.shoppingLists.splice(index, 1);    
       }   
     });
-
   }
 
   mostrarModal = false;
@@ -67,4 +69,8 @@ export class VisualizarListaComponent implements OnInit {
     }
     this.cerrarModal();
   }
+  cerrarSesion() {
+    window.location.reload()
+
+ }
 }

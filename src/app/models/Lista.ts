@@ -15,3 +15,6 @@ export interface ListaParam{
     productid: number;
     list_product_state:string;
 }
+export interface ListaParamUpdate{
+    list_product_state:string;
+}

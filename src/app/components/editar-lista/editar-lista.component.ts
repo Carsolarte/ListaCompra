@@ -1,11 +1,13 @@
 // Importa OnInit para implementar el ciclo de vida ngOnInit
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ShoppingList } from 'src/app/models/ShoppingList';
+import { ShoppingList, ShoppingListParam } from 'src/app/models/ShoppingList';
 import { ListasService } from 'src/app/services/listas.service';
 import { ProductoService } from 'src/app/services/producto.service';
-import { Lista, ListaParam } from 'src/app/models/Lista';
+import { Lista, ListaParam, ListaParamUpdate } from 'src/app/models/Lista';
 import { Producto } from 'src/app/models/Producto';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-editar-lista',
@@ -22,7 +24,7 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
     private shoppingListService: ListasService,
     private productoService: ProductoService,
     private route: ActivatedRoute,
-    private router: Router
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -74,12 +76,18 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
       }   
     });
   }
-
+  //modal de agregar producto
+  
+  mostrarModalAddProduct = false;
   productoId=0;
-  productoNombre = '';
   estadoProducto = '';
   availableProducts:Producto[]=[];
-  mostrarModal = false;
+
+  mostrarModalEditTitle = false;
+  newTitle = '';
+
+  mostrarModalEditProduct = false;
+  newState='';
 
   getProducs(){    
     this.productoService.getProducts().subscribe(data => {
@@ -87,12 +95,22 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
       });
   }
   abrirModalAgregarProducto() {
-    this.mostrarModal = true;
+    this.mostrarModalAddProduct = true;
+  }
+  abrirModalEditProduct() {
+    this.mostrarModalEditProduct = true;
+  }
+  abrirModalEditTile() {
+    this.mostrarModalEditTitle = true;
   }
   cerrarModal() {
-    this.mostrarModal = false;
+    this.mostrarModalEditProduct=false;
+    this.mostrarModalEditTitle=false;
+    this.mostrarModalAddProduct = false;
     this.estadoProducto='';
     this.estadoProducto='';
+    this.newTitle='';
+    this.newState='';
   }
   agregarProducto() {
     if (this.productoId!=0  && this.estadoProducto != "" && this.estadoProducto != null) {
@@ -103,9 +121,37 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
       }
       this.productoService.addProductoListas(productoLista).subscribe(data => {
         this.getProductsLists();
-         
        });
+       this.cerrarModal();
     }
   }
 
+  editProductSelect(id: number) {
+    if(this.newState!=''){
+      const newListTitle:ListaParamUpdate={
+        list_product_state: this.newState
+      }
+      this.productoService.updateProductList(id,newListTitle).subscribe(data => {
+        this.getProductsLists();
+       });;
+    
+      this.cerrarModal();
+    }
+  }
+  editTite() {
+    if(this.newTitle!=''){
+      const newListTitle:ShoppingListParam={
+        list_name: this.newTitle
+      }
+      this.shoppingListService.updateShoppingLista(this.listaId,newListTitle).subscribe(data => {
+        this.getShoppingLists();
+       });;
+    
+      this.cerrarModal();
+    }
+  }
+
+  goBack() {
+    this.location.back();
+  }
 }
