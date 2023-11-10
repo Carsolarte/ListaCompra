@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ShoppingList } from 'src/app/models/ShoppingList';
 import { ListasService } from 'src/app/services/listas.service';
 import { ProductoService } from 'src/app/services/producto.service';
-import { Lista } from 'src/app/models/Lista';
+import { Lista, ListaParam } from 'src/app/models/Lista';
 import { Producto } from 'src/app/models/Producto';
 
 @Component({
@@ -14,10 +14,9 @@ import { Producto } from 'src/app/models/Producto';
 })
 export class EditarListaComponent implements OnInit { // Implementa OnInit
 
-  listaId: number = 1;
+  listaId: number = 0;
   shoppingList: ShoppingList | undefined;
   productList: Lista[] = [];
-  product: Producto | undefined;
 
   constructor(
     private shoppingListService: ListasService,
@@ -33,46 +32,80 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
 
     this.getShoppingLists();
     this.getProductsLists();
-    //this.getProduct(this.listaId);
+    this.getProducs();
   }
 
   getShoppingLists() {
     this.shoppingListService.getShoppingLista(this.listaId).subscribe(data => {
       this.shoppingList = data;
-      console.log(this.shoppingList);
+    
+     
     });
   }
 
   getProductsLists() {
     this.productoService.getProductoListas(this.listaId).subscribe(data => {
       // Mapea los productos a la estructura de Lista
-      this.productList = data.map(product => ({
-        id: product.id,
-        product_id: product.product_id,
-        list_product_state: product.list_product_state,
-        product_name: product.product_name,
-        producto_price: product.producto_price
-      }));
-      console.log(this.productList);
+      this.productList = data
+      for (const productL of this.productList) {
+        this.getProduct(productL)
+        
+      }
+      });
+  } 
+  getProduct(productL: Lista){    
+    this.productoService.getProduct(productL.productid).subscribe(data => {
+      productL.producto = data;
+      this.getSupplier(productL)
       });
   }
-  getProduct(id: number) {
-    this.productoService.getProduct(id).subscribe(data => {
-      this.product = data;
-      console.log(this.product);
+
+  getSupplier(productL: Lista){    
+    this.productoService.getSupplier(productL.producto.supplierid).subscribe(data => {
+      productL.supplier = data;
+      });
+  }
+ 
+  eliminarProduct(id: number) {
+    this.productoService.deleteShoppingLista(id).subscribe(data => {
+      const index = this.productList.findIndex(item => item.id === id);
+      if (index !== -1) {   
+        this.productList.splice(index, 1);    
+      }   
     });
   }
-  eliminarProduct(shoppingListId: number) {
-    this.router.navigate(['/editarLista', shoppingListId]);
+
+  productoId=0;
+  productoNombre = '';
+  estadoProducto = '';
+  availableProducts:Producto[]=[];
+  mostrarModal = false;
+
+  getProducs(){    
+    this.productoService.getProducts().subscribe(data => {
+      this.availableProducts = data;
+      });
   }
   abrirModalAgregarProducto() {
-    // Abre el modal al hacer clic en el botón "Agregar Producto"
-    //$('#modalAgregarProducto').modal('show');
+    this.mostrarModal = true;
+  }
+  cerrarModal() {
+    this.mostrarModal = false;
+    this.estadoProducto='';
+    this.estadoProducto='';
   }
   agregarProducto() {
-    // Lógica para agregar un nuevo producto
-    // Puedes redirigir a una nueva página, mostrar un modal, etc.
-    console.log('Agregar Producto');
+    if (this.productoId!=0  && this.estadoProducto != "" && this.estadoProducto != null) {
+      const productoLista:ListaParam={
+        listid: this.listaId,
+        productid: this.productoId,
+        list_product_state: this.estadoProducto
+      }
+      this.productoService.addProductoListas(productoLista).subscribe(data => {
+        this.getProductsLists();
+         
+       });
+    }
   }
 
 }

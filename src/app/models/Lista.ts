@@ -1,7 +1,17 @@
+import { Producto } from "./Producto";
+import { Proveedor } from "./Proveedor";
+
 export interface Lista{
-    id: number;
-    product_id: number;
+    id:number;
+    listid: number;
+    productid: number;
     list_product_state:string;
-    product_name?: string;
-    producto_price?: number;
+    producto:Producto;
+    supplier:Proveedor;
+}
+
+export interface ListaParam{
+    listid: number;
+    productid: number;
+    list_product_state:string;
 }

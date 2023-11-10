@@ -57,7 +57,6 @@ export class VisualizarListaComponent implements OnInit {
   guardarLista() {
     // Aquí puedes implementar la lógica para guardar la lista con this.nombreLista
     if (this.nombreLista != "" && this.nombreLista != null) {
-      console.log('Guardando lista:', this.nombreLista);
       const lista: ShoppingListParam = {
         list_name: this.nombreLista,
       };

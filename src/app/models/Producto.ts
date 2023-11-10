@@ -1,5 +1,6 @@
 export interface Producto{
+    productid:number;
     product_name:string;
-    producto_price:number;
+    product_price:number;
     supplierid:number;
 }
