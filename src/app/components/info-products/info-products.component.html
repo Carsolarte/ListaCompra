@@ -12,10 +12,32 @@
         <div class="contenedor-crear">
             <div class="d-flex align-items-center">
                 <h2 class="titulo">Proveedores</h2>
-                <button class="btn btn-primary ml-2">
+                <button  (click)="abrirModalAgregarProveedor()" class="btn btn-primary" >
                   Agregar Proovedor
                 </button>
-              </div>
+              </div>            
+               <div class="modal" [class.show]="mostrarModalAddProv">
+                 <div class="modal-dialog">
+                   <div class="modal-content">
+                     <div class="modal-header">
+                       <h5 class="modal-title">Agregar Proveedor</h5>
+                       <button type="button" class="close" (click)="cerrarModal()">
+                         <span aria-hidden="true">&times;</span>
+                       </button>
+                     </div>
+                     <div class="modal-body">
+                       <label for="nombreLista">Nombre Proveedor:</label>
+                       <input type="text" id="nombreLista"  class="form-control">
+                     </div>
+                     <div class="modal-footer">
+                       <button type="button" class="btn btn-primary" >Guardar</button>
+                       <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+     
+
             <table class="table table-striped rounded">
                 <thead>
                     <tr>
@@ -46,10 +68,38 @@
         <div class="table-responsive">
             <div class="d-flex align-items-center">
                 <h2 class="titulo">Productos</h2>
-                <button class="btn btn-primary ml-2">
+                <button  (click)="abrirModalAgregarProducto()" class="btn btn-primary ml-2">
                   Agregar producto
                 </button>
               </div>
+
+              <div class="modal" [class.show]="mostrarModalAddProd">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Agregar Producto</h5>
+                      <button type="button" class="close" (click)="cerrarModal()">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <label for="nombreLista">Producto:</label>
+                      <input type="text" id="nombreLista"  class="form-control">
+                    </div>
+                    <div class="modal-body">
+                        <label for="nombreLista">Precio:</label>
+                        <input type="text" id="nombreLista"  class="form-control">
+                      </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" >Guardar</button>
+                      <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              
             <table class="table table-striped rounded">
                 <thead>
                     <tr>
@@ -80,6 +130,9 @@
                 </tbody>
             </table>
         </div>
+
+        
+        
 
     </div>
     <router-outlet></router-outlet>
