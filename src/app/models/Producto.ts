@@ -4,3 +4,9 @@ export interface Producto{
     product_price:number;
     supplierid:number;
 }
+
+export interface ProductParam{
+    product_name: string;
+    product_price: number;
+    supplierid: number;
+}

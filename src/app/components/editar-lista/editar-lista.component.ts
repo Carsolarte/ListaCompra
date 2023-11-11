@@ -107,7 +107,7 @@ export class EditarListaComponent implements OnInit { // Implementa OnInit
     this.mostrarModalEditProduct=false;
     this.mostrarModalEditTitle=false;
     this.mostrarModalAddProduct = false;
-    this.estadoProducto='';
+    this.productoId=0;
     this.estadoProducto='';
     this.newTitle='';
     this.newState='';
